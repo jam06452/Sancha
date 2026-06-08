@@ -10,5 +10,7 @@ defmodule Sancha.Repo.Migrations.Oauth do
       add :avatar, :string
       add :provider, :string
     end
+
+    create unique_index(:oauth, [:email])
   end
 end

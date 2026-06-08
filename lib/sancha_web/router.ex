@@ -14,6 +14,11 @@ defmodule SanchaWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/auth" do
+    pipe_through :browser
+    forward "/", Amur.Router
+  end
+
   scope "/", SanchaWeb do
     pipe_through :browser
 
