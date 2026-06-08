@@ -20,6 +20,17 @@ if System.get_env("PHX_SERVER") do
   config :sancha, SanchaWeb.Endpoint, server: true
 end
 
+config :amur,
+  base_url: "http://localhost:4000",
+  providers: [
+    hackclub: [
+      client_id: System.fetch_env!("HACKCLUB_CLIENT_ID"),
+      client_secret: System.fetch_env!("HACKCLUB_CLIENT_SECRET")
+    ]
+  ],
+  on_success: &Sancha.AuthController.on_success/2,
+  on_failure: &Sancha.AuthController.on_failure/2
+
 config :sancha, SanchaWeb.Endpoint,
   http: [port: String.to_integer(System.get_env("PORT", "4000"))]
 
