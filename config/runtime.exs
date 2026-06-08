@@ -1,4 +1,12 @@
 import Config
+import Dotenvy
+
+env_dir_prefix = System.get_env("RELEASE_ROOT") || Path.expand("./")
+
+source!([
+  Path.absname(".env", env_dir_prefix),
+  System.get_env()
+])
 
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the
@@ -24,8 +32,8 @@ config :amur,
   base_url: "http://localhost:4000",
   providers: [
     hackclub: [
-      client_id: System.fetch_env!("HACKCLUB_CLIENT_ID"),
-      client_secret: System.fetch_env!("HACKCLUB_CLIENT_SECRET")
+      client_id: env!("HACKCLUB_CLIENT_ID", :string!),
+      client_secret: env!("HACKCLUB_CLIENT_SECRET", :string!)
     ]
   ],
   on_success: &Sancha.AuthController.on_success/2,
