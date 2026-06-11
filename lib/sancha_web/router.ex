@@ -23,6 +23,7 @@ defmodule SanchaWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/dash", Dash
   end
 
   # Other scopes may use custom stacks.
