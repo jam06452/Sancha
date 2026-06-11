@@ -18,7 +18,7 @@ defmodule Sancha.AuthController do
     |> configure_session(renew: true)
     |> put_session(:user_id, user.uuid)
     |> put_flash(:info, "Logged in as #{user.email}")
-    |> redirect(to: "/")
+    |> redirect(to: "/dash")
   end
 
   def on_failure(conn, reason) do
