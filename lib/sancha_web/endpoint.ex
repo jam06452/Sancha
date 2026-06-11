@@ -8,7 +8,8 @@ defmodule SanchaWeb.Endpoint do
     store: :cookie,
     key: "_sancha_key",
     signing_salt: "Y1mkgnb0",
-    same_site: "Lax"
+    same_site: "Lax",
+    secure: false
   ]
 
   socket "/live", Phoenix.LiveView.Socket,
