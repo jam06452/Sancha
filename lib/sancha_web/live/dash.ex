@@ -18,7 +18,7 @@ defmodule SanchaWeb.Dash do
   def render(assigns) do
     ~H"""
     <div class="avatar">
-      <div class="w-24 rounded-full">
+      <div class="w-10 rounded-full">
         <img src={@user_data.avatar} />
       </div>
     </div>
