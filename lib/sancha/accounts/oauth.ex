@@ -15,5 +15,15 @@ defmodule Sancha.Oauth do
     oauth
     |> cast(attrs, [:name, :email, :slack_id, :avatar, :provider])
     |> validate_required([:name, :email, :provider])
+    |> prepare_changes(fn changeset ->
+      slack_id = get_field(changeset, :slack_id)
+      avatar_url = get_field(changeset, :avatar)
+
+      if !is_nil(slack_id) and is_nil(avatar_url) do
+        put_change(changeset, :avatar, "https://cachet.dunkirk.sh/users/#{slack_id}/r")
+      else
+        changeset
+      end
+    end)
   end
 end
