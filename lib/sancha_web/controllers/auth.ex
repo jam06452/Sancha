@@ -1,4 +1,5 @@
 defmodule Sancha.AuthController do
+  require Logger
   import Plug.Conn
   import Phoenix.Controller
   alias Sancha.Repo
@@ -22,12 +23,10 @@ defmodule Sancha.AuthController do
   end
 
   def on_failure(conn, reason) do
-    IO.inspect(reason, label: "AUTH FAILURE")
+    Logger.warning(reason)
 
     conn
     |> put_flash(:error, "Authentication Error")
-    |> put_resp_header("location", "/")
-    |> send_resp(302, "Redirecting...")
-    |> halt()
+    |> redirect(to: "/dash")
   end
 end
