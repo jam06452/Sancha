@@ -4,11 +4,12 @@ import Config
 config :sancha, Sancha.Repo,
   username: "postgres",
   password: "postgres",
-  hostname: "localhost",
+  hostname: "127.0.0.1",
   database: "sancha_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  pool_size: 10,
+  socket_options: [:inet]
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
