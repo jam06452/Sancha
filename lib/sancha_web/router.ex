@@ -19,6 +19,12 @@ defmodule SanchaWeb.Router do
     forward "/", Amur.Router
   end
 
+  scope "/api", SanchaWeb do
+    pipe_through :api
+
+    get "/uuid", APIController, :uuid
+  end
+
   scope "/", SanchaWeb do
     pipe_through :browser
 
