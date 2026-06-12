@@ -1,4 +1,5 @@
 import Config
+config :sancha, Oban, testing: :manual
 
 # Configure your database
 #

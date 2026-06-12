@@ -7,6 +7,12 @@
 # General application configuration
 import Config
 
+config :sancha, Oban,
+  engine: Oban.Engines.Basic,
+  notifier: Oban.Notifiers.Postgres,
+  queues: [default: 10],
+  repo: Sancha.Repo
+
 config :sancha,
   ecto_repos: [Sancha.Repo],
   generators: [timestamp_type: :utc_datetime]

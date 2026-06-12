@@ -11,6 +11,7 @@ defmodule Sancha.Application do
       SanchaWeb.Telemetry,
       Sancha.Repo,
       {DNSCluster, query: Application.get_env(:sancha, :dns_cluster_query) || :ignore},
+      {Oban, Application.fetch_env!(:sancha, Oban)},
       {Phoenix.PubSub, name: Sancha.PubSub},
       # Start a worker by calling: Sancha.Worker.start_link(arg)
       # {Sancha.Worker, arg},
