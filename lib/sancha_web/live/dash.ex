@@ -64,7 +64,7 @@ defmodule SanchaWeb.Dash do
               </li>
               <li class="mt-1 pt-1 border-t border-base-200">
                 <.link
-                  href={~p"/logout"}
+                  href="/logout"
                   class="rounded-lg text-sm text-error/80 hover:text-error hover:bg-error/10"
                 >
                   Sign out

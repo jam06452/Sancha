@@ -19,6 +19,6 @@ defmodule SanchaWeb.PageController do
     conn
     |> delete_session(:user_id)
     |> put_flash(:info, "Logged out successfully.")
-    |> redirect(to: ~p"/")
+    |> redirect(to: "/")
   end
 end
