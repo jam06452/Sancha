@@ -29,7 +29,7 @@ if System.get_env("PHX_SERVER") do
 end
 
 config :amur,
-  base_url: env!("BASE_URL", :string!) || "localhost:4000",
+  base_url: "https://" <> env!("BASE_URL", :string!) || "http://localhost:4000",
   providers: [
     hackclub: [
       client_id: env!("HACKCLUB_CLIENT_ID", :string!),
