@@ -23,6 +23,8 @@ defmodule SanchaWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/login", PageController, :signin
+    get "/logout", PageController, :logout
     live "/dash", Dash
   end
 
