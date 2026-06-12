@@ -29,7 +29,7 @@ if System.get_env("PHX_SERVER") do
 end
 
 config :amur,
-  base_url: "https://sancha.jam06452.uk",
+  base_url: env!("BASE_URL", :string!) || "localhost:4000",
   providers: [
     hackclub: [
       client_id: env!("HACKCLUB_CLIENT_ID", :string!),
@@ -72,7 +72,7 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  host = System.get_env("PHX_HOST") || "example.com"
+  host = env!("BASE_URL", :string!) || "localhost:4000"
 
   config :sancha, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 
