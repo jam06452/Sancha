@@ -16,6 +16,7 @@ defmodule Sancha.Application do
       # Start a worker by calling: Sancha.Worker.start_link(arg)
       # {Sancha.Worker, arg},
       # Start to serve requests, typically the last entry
+      Sancha.Uuid.Counter,
       SanchaWeb.Endpoint
     ]
 

@@ -13,6 +13,7 @@ defmodule Sancha.Uuid.Repo do
       end)
 
     Sancha.Repo.insert_all(Sancha.Uuid, batch)
+    Sancha.Uuid.Counter.increment(1000)
   end
 
   def claim_uuid(uuid \\ nil) do
@@ -32,6 +33,7 @@ defmodule Sancha.Uuid.Repo do
 
     case Repo.update_all(query, set: [claimed: true, claimed_by: uuid]) do
       {1, [claimed_record]} ->
+        Sancha.Uuid.Counter.decrement()
         {:ok, claimed_record.uuid}
 
       {0, []} ->
